@@ -1,0 +1,16 @@
+{
+  "name": "cliff",
+  "version": "0.1.0",
+  "description": "Parser for YGOPro compatible replay files that converts YRP/YRPX into a well-structured JSON file",
+  "main": "index.js",
+  "repository": "https://github.com/ygoreplay/cliff",
+  "author": "Sophia <beyondthesophia@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "node-addon-api": "^4.2.0"
+  },
+  "devDependencies": {
+    "cmake-js": "^6.2.1"
+  }
+}
