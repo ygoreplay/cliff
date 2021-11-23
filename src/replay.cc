@@ -2,7 +2,7 @@
 
 byte Replay::scriptBuffer[0x20000];
 std::unordered_map<size_t, Replay*>* Replay::instances = nullptr;
-std::string Replay::scriptDirectory = "./";
+fs::path Replay::scriptDirectory = "./";
 
 Replay* Replay::fromFile(const fs::path &path) {
     if (!fs::exists(path) || !fs::is_regular_file(path)) {
@@ -93,7 +93,7 @@ byte* Replay::readScript(const char* scriptName, int* length) {
     fs::path path = (scriptName + 2);
     fs::path expansionPath = "expansions/" / path;
     auto scriptReader = [](const fs::path& targetPath, byte* destBuffer, int* length) {
-        std::ifstream file(Replay::scriptDirectory / targetPath);
+        std::ifstream file(Replay::scriptDirectory / ".." / targetPath);
         if (file.fail()) {
             return false;
         }

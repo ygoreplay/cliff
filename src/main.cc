@@ -13,18 +13,18 @@ static Napi::Value Initialize(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    std::string databasePath = info[0].As<Napi::String>().Utf8Value();
-    if (!CardManager::getInstance()->initialize(databasePath)) {
+    if (const std::string databasePath = info[0].As<Napi::String>().Utf8Value(); !CardManager::getInstance()->initialize(databasePath)) {
         return Napi::Boolean::New(env, false);
     }
 
-    std::string scriptDirectory = info[1].As<Napi::String>().Utf8Value();
+    const std::string scriptDirectory = info[1].As<Napi::String>().Utf8Value();
     Replay::setScriptDirectory(scriptDirectory);
 
     return Napi::Boolean::New(env, true);
 }
 
 static Napi::Value ParseReplayFile(const Napi::CallbackInfo& info) {
+
     Napi::Env env = info.Env();
     if (info.Length() < 1) {
         Napi::TypeError::New(env, "Wrong number of arguments").ThrowAsJavaScriptException();

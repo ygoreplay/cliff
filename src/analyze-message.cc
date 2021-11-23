@@ -25,7 +25,6 @@ bool Replay::analyzeMessage(char* message, size_t length, ParseResult* parseResu
             case MSG_RETRY: {
                 return false;
             }
-
             case MSG_HINT: {
                 reader.moveCursorForward(6);
                 break;

@@ -23,7 +23,7 @@ public:
 private:
     static std::unordered_map<size_t, Replay*>* instances;
     static byte scriptBuffer[0x20000];
-    static std::string scriptDirectory;
+    static fs::path scriptDirectory;
 
 private:
     static byte* readScript(const char* scriptName, int* length);
