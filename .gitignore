@@ -4,3 +4,4 @@
 /deps
 /.idea
 /node_modules
+/test.ts
